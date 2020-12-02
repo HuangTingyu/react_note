@@ -166,3 +166,70 @@ html部分，input框的value绑定state中的数据
 <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
 ```
 
+### 添加删除操作
+
+```js
+ class TodoList extends React.Component{
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: [],
+      inputValue:""
+    }
+  }
+ render() {
+    return (
+    ......
+      <ul>
+        {
+          this.state.list.map((item, index) => {
+            return <li key={index} onClick={this.handleItemClick.bind(this,index)}>{item}</li>
+          })
+        }
+      </ul>
+    )
+  }
+  handleItemClick(index) {
+    // 建议不要直接操作 this.state.list
+    let list = [...this.state.list]
+    list.splice(index, 1)
+    this.setState({
+      list:list
+    })
+  }
+}
+```
+
+### 父子组件通信
+
+`src\TodoList.js`
+
+父组件通过属性的形式，向子组件传递参数
+
+```js
+{
+          this.state.list.map((item, index) => {
+            return <TodoItem content={item}></TodoItem>
+          })
+}
+```
+
+子组件通过props接收
+
+`src\TodoItem.js`
+
+```js
+import React from 'react'
+
+class TodoItem extends React.Component{ 
+    render() {
+        return (
+            return <TodoItem key={index} content={item}></TodoItem>
+        )
+    }
+}
+
+export default TodoItem;
+```
+

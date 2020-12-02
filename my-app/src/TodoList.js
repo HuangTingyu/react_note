@@ -1,4 +1,5 @@
 import React from 'react'
+import TodoItem from './TodoItem'
 
 class TodoList extends React.Component{
 
@@ -19,7 +20,8 @@ class TodoList extends React.Component{
       <ul>
         {
           this.state.list.map((item, index) => {
-            return <li key={index}>{item}</li>
+            return <TodoItem key={index} content={item}></TodoItem>
+            // return <li key={index} onClick={this.handleItemClick.bind(this,index)}>{item}</li>
           })
         }
       </ul>
@@ -34,6 +36,14 @@ class TodoList extends React.Component{
   handleInputChange(e) {
     this.setState({
       inputValue: e.target.value
+    })
+  }
+  handleItemClick(index) {
+    // 建议不要直接操作 this.state.list
+    let list = [...this.state.list]
+    list.splice(index, 1)
+    this.setState({
+      list:list
     })
   }
 }
