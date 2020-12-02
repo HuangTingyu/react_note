@@ -74,3 +74,66 @@ ps.只能写表达式，不能写一坨if...else语句
 
 ![demo01](.\img\demo01.png)
 
+### TodoList
+
+数据部分
+
+```js
+import React from 'react'
+class TodoList extends React.Component{
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: [
+        "Todo 1",
+        "Todo 2"
+      ]
+    }
+  }
+  ......
+}
+export default TodoList;
+```
+
+定义方法
+
+```js
+import React from 'react'
+
+class TodoList extends React.Component{
+  ......
+  render() {
+    return (<div>
+      <section>
+        <input></input>
+        <button onClick={this.handleBtnClick.bind(this)}>add</button>
+      </section>
+      <ul>
+        {
+          this.state.list.map((item, index) => {
+            return <li key={index}>{item}</li>
+          })
+        }
+      </ul>
+    </div>)
+  }
+  handleBtnClick() {
+    this.setState({
+      list:[...this.state.list, "click"]
+    })
+  }
+}
+
+export default TodoList;
+```
+
+绑定方法，注意点1，要改变this指向
+
+```
+onClick={this.handleBtnClick.bind(this)
+```
+
+注意点2，改数据的时候要使用`this.setState` 方法 ！！
+
+不要直接`this.state.list`一通操作，会报错de。
