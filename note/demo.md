@@ -233,3 +233,55 @@ class TodoItem extends React.Component{
 export default TodoItem;
 ```
 
+子组件通过调用父组件传递过来的方法
+
+```js
+render() {
+    ......
+this.state.list.map((item, index) => {
+            return (
+              <TodoItem delete={this.handleDelete}
+                key={index}
+                content={item}
+                index={index}
+              ></TodoItem>
+            )
+          })
+          ......
+ )
+ 
+ handleDelete(index) {
+    // 建议不要直接操作 this.state.list
+    let list = [...this.state.list]
+    list.splice(index, 1)
+    this.setState({
+      list:list
+    })
+  }
+```
+
+子组件直接调用父组件传过来的方法
+
+`this.props.delete`
+
+```js
+import React from 'react'
+
+class TodoItem extends React.Component{ 
+    constructor(props) {
+        super(props)
+        this.handleDelete = this.handleDelete.bind(this)
+    }
+    render() {
+        return (
+            <div onClick={this.handleDelete}>{ this.props.content}</div>
+        )
+    }
+    handleDelete() {
+        this.props.delete(this.props.index)
+    }
+}
+
+export default TodoItem;
+```
+
