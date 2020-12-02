@@ -85,10 +85,8 @@ class TodoList extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      list: [
-        "Todo 1",
-        "Todo 2"
-      ]
+      list: [],
+      inputValue:""
     }
   }
   ......
@@ -99,14 +97,13 @@ export default TodoList;
 定义方法
 
 ```js
-import React from 'react'
-
 class TodoList extends React.Component{
   ......
+
   render() {
     return (<div>
       <section>
-        <input></input>
+        <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
         <button onClick={this.handleBtnClick.bind(this)}>add</button>
       </section>
       <ul>
@@ -120,7 +117,15 @@ class TodoList extends React.Component{
   }
   handleBtnClick() {
     this.setState({
-      list:[...this.state.list, "click"]
+        // 保存原来的值，顺便塞新的值
+      list: [...this.state.list, this.state.inputValue],
+        // input框清空
+      inputValue:""
+    })
+  }
+  handleInputChange(e) {
+    this.setState({
+      inputValue: e.target.value
     })
   }
 }
@@ -128,12 +133,36 @@ class TodoList extends React.Component{
 export default TodoList;
 ```
 
-绑定方法，注意点1，要改变this指向
+绑定方法，
+
+- 注意点1，要改变this指向
 
 ```
 onClick={this.handleBtnClick.bind(this)
 ```
 
-注意点2，改数据的时候要使用`this.setState` 方法 ！！
+- 注意点2，改数据的时候要使用`this.setState` 方法 ！！
 
 不要直接`this.state.list`一通操作，会报错de。
+
+- 注意点3，li标签记得绑上key值，不然会有warning
+
+- 注意点4，input框清空
+
+```js
+  handleBtnClick() {
+    this.setState({
+        // 保存原来的值，顺便塞新的值
+      list: [...this.state.list, this.state.inputValue],
+        // input框清空
+      inputValue:""
+    })
+  }
+```
+
+html部分，input框的value绑定state中的数据
+
+```
+<input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
+```
+

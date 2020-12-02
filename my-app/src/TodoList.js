@@ -5,17 +5,15 @@ class TodoList extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      list: [
-        "Todo 1",
-        "Todo 2"
-      ]
+      list: [],
+      inputValue:""
     }
   }
 
   render() {
     return (<div>
       <section>
-        <input></input>
+        <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
         <button onClick={this.handleBtnClick.bind(this)}>add</button>
       </section>
       <ul>
@@ -29,7 +27,13 @@ class TodoList extends React.Component{
   }
   handleBtnClick() {
     this.setState({
-      list:[...this.state.list, "click"]
+      list: [...this.state.list, this.state.inputValue],
+      inputValue:""
+    })
+  }
+  handleInputChange(e) {
+    this.setState({
+      inputValue: e.target.value
     })
   }
 }
