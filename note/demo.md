@@ -201,11 +201,13 @@ html部分，input框的value绑定state中的数据
 }
 ```
 
-### 父子组件通信
+### 父组件传给子组件
 
 `src\TodoList.js`
 
 父组件通过属性的形式，向子组件传递参数
+
+`<TodoItem content={item}></TodoItem>`
 
 ```js
 {
@@ -217,39 +219,70 @@ html部分，input框的value绑定state中的数据
 
 子组件通过props接收
 
+`this.props.content`
+
+`this.props.index`
+
 `src\TodoItem.js`
 
 ```js
 import React from 'react'
 
 class TodoItem extends React.Component{ 
+    constructor(props) {
+        super(props)
+        this.handleDelete = this.handleDelete.bind(this)
+    }
     render() {
         return (
-            return <TodoItem key={index} content={item}></TodoItem>
+            <div onClick={this.handleDelete}>{ this.props.content}</div>
         )
+    }
+    handleDelete() {
+        console.log(this.props.index)
     }
 }
 
 export default TodoItem;
 ```
 
-子组件通过调用父组件传递过来的方法
+### 子组件向父组件传递
+
+父组件传递函数给子组件
+
+`<TodoItem delete={this.handleDelete}
+          key={index}
+          content={item}
+          index={index}
+        ></TodoItem>`
 
 ```js
 render() {
-    ......
-this.state.list.map((item, index) => {
-            return (
-              <TodoItem delete={this.handleDelete}
-                key={index}
-                content={item}
-                index={index}
-              ></TodoItem>
-            )
-          })
-          ......
+	return (<div>
+      <section>
+        <input value={this.state.inputValue} onChange={this.handleInputChange}>		         </input>
+        <button onClick={this.handleBtnClick}>add</button>
+      </section>
+      <ul>
+        {
+          this.handleTodoItems()
+        }
+      </ul>
+    </div>)
  )
- 
+}
+  handleTodoItems() {
+    return this.state.list.map((item, index) => {
+      return (
+        <TodoItem delete={this.handleDelete}
+          key={index}
+          content={item}
+          index={index}
+        ></TodoItem>
+      )
+      // return <li key={index} onClick={this.handleItemClick.bind(this,index)}>{item}</li>
+    })
+  }
  handleDelete(index) {
     // 建议不要直接操作 this.state.list
     let list = [...this.state.list]
