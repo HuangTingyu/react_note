@@ -20,10 +20,13 @@ class TodoList extends React.Component{
   render() {
     return (<div>
       <section>
-        <input value={this.state.inputValue} onChange={this.handleInputChange}></input>
+        <input value={this.state.inputValue}
+          onChange={this.handleInputChange}
+          ref={(input)=>{this.input = input}}
+        ></input>
         <button onClick={this.handleBtnClick}>add</button>
       </section>
-      <ul>
+      <ul ref={(ul)=>{this.ul = ul}}>
         {
           this.handleTodoItems()
         }
@@ -48,11 +51,16 @@ class TodoList extends React.Component{
     this.setState({
       list: [...this.state.list, this.state.inputValue],
       inputValue:""
+    }, () => {
+      console.log(this.ul.querySelectorAll('div'))
     })
+    
   }
   handleInputChange(e) {
+    // let value = e.target.value 
+    let value = this.input.value
     this.setState({
-      inputValue: e.target.value
+      inputValue: value
     })
   }
   handleDelete(index) {
