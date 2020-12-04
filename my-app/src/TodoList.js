@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoItem from './TodoItem'
+import TestProps from './testProps'
 
 class TodoList extends React.Component{
 
@@ -27,6 +28,8 @@ class TodoList extends React.Component{
           this.handleTodoItems()
         }
       </ul>
+      <TestProps content={ this.state.inputValue}></TestProps>
+
     </div>)
   }
   handleTodoItems() {

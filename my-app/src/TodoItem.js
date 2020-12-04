@@ -22,4 +22,8 @@ TodoItem.propTypes = {
     index: PropTypes.number
 }
 
+TodoItem.defaultProps = {
+    test : 'testDefaultProps'
+}
+
 export default TodoItem;
