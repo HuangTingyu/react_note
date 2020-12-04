@@ -68,3 +68,13 @@ TodoItem.defaultProps = {
 }
 ```
 
+### 定义多种类型
+
+此时content可以是string，也可以是number
+
+```javascript
+TodoItem.propTypes = {
+    content:  PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+```
+
