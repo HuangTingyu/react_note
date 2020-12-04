@@ -18,6 +18,7 @@ class TodoList extends React.Component{
   }
 
   render() {
+    console.log('render')
     return (<div>
       <section>
         <input value={this.state.inputValue}
@@ -35,6 +36,18 @@ class TodoList extends React.Component{
 
     </div>)
   }
+  // 组件被挂载到页面后自动执行
+  componentWillMount() {
+    console.log('Component WILL MOUNT!')
+  }
+  // 组件被挂在后执行
+  componentDidMount() {
+     console.log('Component DID MOUNT!')
+  }
+  shouldComponentUpdate(newProps, newState) {
+    console.log("shouldComponentUpdate")
+    return true;
+  } 
   handleTodoItems() {
     return this.state.list.map((item, index) => {
       return (
