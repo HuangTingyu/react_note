@@ -166,6 +166,22 @@ html部分，input框的value绑定state中的数据
 <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}></input>
 ```
 
+### constructor
+
+为了方便函数中，可以快速获取到this，并且同时保证，`this` 的绑定只会绑定一次且不会频繁触发子组件的渲染。可以在 `constructor` 中添加
+
+```js
+class TodoItem extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleDelete = this.handleDelete.bind(this)
+    }
+    ......
+   }
+```
+
+
+
 ### 添加删除操作
 
 ```js

@@ -37,23 +37,23 @@ class TodoList extends React.Component{
     </div>)
   }
   // 组件被挂载到页面后自动执行
-  componentWillMount() {
-    console.log('Component WILL MOUNT!')
-  }
-  // 组件被挂在后执行
-  componentDidMount() {
-     console.log('Component DID MOUNT!')
-  }
-  shouldComponentUpdate(newProps, newState) {
-    console.log("shouldComponentUpdate")
-    return true;
-  }
-  componentWillUpdate() {
-    console.log("componentWillUpdate")
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate')
-  }
+  // componentWillMount() {
+  //   console.log('Component WILL MOUNT!')
+  // }
+  // // 组件被挂在后执行
+  // componentDidMount() {
+  //    console.log('Component DID MOUNT!')
+  // }
+  // shouldComponentUpdate(newProps, newState) {
+  //   console.log("shouldComponentUpdate")
+  //   return true;
+  // }
+  // componentWillUpdate() {
+  //   console.log("componentWillUpdate")
+  // }
+  // componentDidUpdate() {
+  //   console.log('componentDidUpdate')
+  // }
   handleTodoItems() {
     return this.state.list.map((item, index) => {
       return (

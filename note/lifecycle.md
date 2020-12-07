@@ -37,3 +37,21 @@ shouldComponentUpdate(newProps, newState) {
 `componentWillUnmount`
 
 组件被移除的时候触发。
+
+### 生命周期的应用
+
+可以在子组件中添加
+
+例如，`src\TodoItem.js`
+
+```
+shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        } else {
+            return false
+        }
+    }
+```
+
+防止 `input` 框更新时，子组件的render函数反复触发。

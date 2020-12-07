@@ -6,7 +6,15 @@ class TodoItem extends React.Component {
         super(props)
         this.handleDelete = this.handleDelete.bind(this)
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        } else {
+            return false
+        }
+    }
     render() {
+        console.log("child render")
         return (
             <div onClick={this.handleDelete}>{this.props.test}{this.props.content}</div>
         )
@@ -15,13 +23,13 @@ class TodoItem extends React.Component {
         this.props.delete(this.props.index)
     }
 
-    componentWillReceiveProps() {
-        console.log("child componentWillReceiveProps")
-    }
+    // componentWillReceiveProps() {
+    //     console.log("child componentWillReceiveProps")
+    // }
 
-    componentWillUnmount() {
-        console.log("child componentWillUnmount")
-    }
+    // componentWillUnmount() {
+    //     console.log("child componentWillUnmount")
+    // }
 }
 TodoItem.propTypes = {
     test: PropTypes.string.isRequired,
