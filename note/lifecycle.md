@@ -6,6 +6,12 @@
 
 `componentWillMount` => `render` => `componentDidMount`
 
+### `componentDidMount`
+
+`ajax` 请求写在这里面
+
+发请求用 `axios`
+
 ### `update`
 
 组件刷新

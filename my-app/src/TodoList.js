@@ -42,6 +42,7 @@ class TodoList extends React.Component{
   // }
   // // 组件被挂在后执行
   // componentDidMount() {
+        // ajax请求通通写在这里
   //    console.log('Component DID MOUNT!')
   // }
   // shouldComponentUpdate(newProps, newState) {
