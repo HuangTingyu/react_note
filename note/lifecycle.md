@@ -61,3 +61,4 @@ shouldComponentUpdate(nextProps, nextState) {
 ```
 
 防止 `input` 框更新时，子组件的render函数反复触发。
+
