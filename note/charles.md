@@ -19,15 +19,15 @@ Local path选择 `.json` 文件，即要返回的数据
 `src\TodoList.js`
 
 ```js
- componentDidMount() {
+  componentDidMount() {
         //ajax请求通通写在这里
     console.log('Component DID MOUNT!')
     axios.get('/api/todolist')
       .then((res) => {
-        console.log(res.data)
         this.setState(() => {
           return {
-            list: res.data
+              // 这样写可以防止，res.data导致list赋值错误
+            list: [...res.data]
           }
         })
       }).catch(() => {
