@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoItem from './TodoItem'
+import axios from 'axios'
 // import TestProps from './testProps'
 
 class TodoList extends React.Component{
@@ -41,10 +42,21 @@ class TodoList extends React.Component{
   //   console.log('Component WILL MOUNT!')
   // }
   // // 组件被挂在后执行
-  // componentDidMount() {
-        // ajax请求通通写在这里
-  //    console.log('Component DID MOUNT!')
-  // }
+  componentDidMount() {
+        //ajax请求通通写在这里
+    console.log('Component DID MOUNT!')
+    axios.get('/api/todolist')
+      .then((res) => {
+        console.log(res.data)
+        this.setState(() => {
+          return {
+            list: res.data
+          }
+        })
+      }).catch(() => {
+      console.log("error")
+    })
+  }
   // shouldComponentUpdate(newProps, newState) {
   //   console.log("shouldComponentUpdate")
   //   return true;

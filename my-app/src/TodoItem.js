@@ -39,7 +39,7 @@ TodoItem.propTypes = {
 }
 
 TodoItem.defaultProps = {
-    test : 'testDefaultProps'
+    test : ''
 }
 
 export default TodoItem;
