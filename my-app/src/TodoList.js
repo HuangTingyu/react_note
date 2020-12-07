@@ -45,16 +45,16 @@ class TodoList extends React.Component{
   componentDidMount() {
         //ajax请求通通写在这里
     console.log('Component DID MOUNT!')
-    axios.get('/api/todolist')
-      .then((res) => {
-        this.setState(() => {
-          return {
-            list: [...res.data]
-          }
-        })
-      }).catch(() => {
-      console.log("error")
-    })
+    // axios.get('/api/todolist')
+    //   .then((res) => {
+    //     this.setState(() => {
+    //       return {
+    //         list: [...res.data]
+    //       }
+    //     })
+    //   }).catch(() => {
+    //   console.log("error")
+    // })
   }
   // shouldComponentUpdate(newProps, newState) {
   //   console.log("shouldComponentUpdate")
