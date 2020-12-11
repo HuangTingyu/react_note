@@ -30,6 +30,29 @@ class App extends React.Component{
 export default App;
 ```
 
+### Fragment占位符
+
+render函数只能返回根节点只有一个DOM的结构。
+
+可以选择 `Fragment` 作为占位符节点。
+
+```html
+import React, { Component, Fragment } from 'react'
+
+class App extends Component {
+    render() {
+        return (
+            <Fragment>
+                <div>APP</div>
+                <button>toggle</button>
+            </Fragment>
+        )
+    }
+}
+
+export default App
+```
+
 ### JSX
 
 此处的html结构没有报错，因为这是基于JSX语法
