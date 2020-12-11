@@ -49,5 +49,56 @@ export default App
 
 `transition: all 1s ease-in;` 可以给个渐隐渐显的动画效果。
 
+### 更详细的设置
 
+`src\css\App.css`
 
+```css
+.show {
+  animation: show-item 2s ease-in forwards;
+}
+
+.hide {
+  animation: hide-item 2s ease-in forwards;
+}
+
+@keyframes show-item {
+  0% {
+    opacity: 0;
+    color: red;
+  }
+  50% {
+    opacity: 0.5;
+    color: green;
+  }
+  100% {
+    opacity: 1;
+    color: blue;
+  }
+}
+
+@keyframes hide-item {
+  0% {
+    opacity: 1;
+    color: red;
+  }
+  50% {
+    opacity: 0.5;
+    color: green;
+  }
+  100% {
+    opacity: 0;
+    color: blue;
+  }
+}
+```
+
+`animation: show-item 2s ease-in forwards;`
+
+show-item设置动画
+
+`2s` 动画时间
+
+`ease-in ` 生成速度的曲线
+
+forwards是为了将最后一帧作为最终的样式。
