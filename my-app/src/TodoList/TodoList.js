@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 import axios from 'axios'
+import '../css/TodoList.css'
 // import TestProps from './testProps'
 
 class TodoList extends React.Component{
@@ -26,7 +27,8 @@ class TodoList extends React.Component{
           onChange={this.handleInputChange}
           ref={(input)=>{this.input = input}}
         ></input>
-        <button onClick={this.handleBtnClick}>add</button>
+        {/* <button onClick={this.handleBtnClick} style={{ background: "#ff0000", border: "solid 1px #00ff00" }}>add</button> */}
+        <button onClick={this.handleBtnClick} className="red_btn">add</button>
       </section>
       <ul ref={(ul)=>{this.ul = ul}}>
         {

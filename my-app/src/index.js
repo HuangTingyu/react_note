@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './AntdTodoList/TodoList';
+import TodoList from './TodoList/TodoList';
 // import App from './App'
 import reportWebVitals from './reportWebVitals';
 
