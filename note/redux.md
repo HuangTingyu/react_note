@@ -37,15 +37,18 @@ export default reducer
 class TodoList extends Component {
     constructor(props) {
         super(props)
-        console.log(store.getState())
+        this.state = store.getState()
     }
     ...
 }
 ```
 
-这时候就会打印出默认值
+`render` 中使用
 
-```
-{inputValue: "", list: []}
+```html
+<List style={{marginTop: "10px", width: "300px"}}
+                    bordered
+                    dataSource={this.state.list}
+/>
 ```
 
