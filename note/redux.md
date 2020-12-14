@@ -29,3 +29,23 @@ export default reducer
    
 ```
 
+### 使用 `store` 
+
+`src\AntdTodoList\TodoList.js`
+
+```js
+class TodoList extends Component {
+    constructor(props) {
+        super(props)
+        console.log(store.getState())
+    }
+    ...
+}
+```
+
+这时候就会打印出默认值
+
+```
+{inputValue: "", list: []}
+```
+

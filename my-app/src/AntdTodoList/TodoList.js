@@ -1,14 +1,13 @@
 import React, { Component,Fragment } from 'react'
-import { Input, Button, List  } from 'antd';
+import { Input, Button, List } from 'antd';
+import store from '../store/index.js'
 
-const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ];
+
 class TodoList extends Component {
+    constructor(props) {
+        super(props)
+        console.log(store.getState())
+    }
     render() {
         return (
             <Fragment>
@@ -16,7 +15,7 @@ class TodoList extends Component {
                 <Button type="primary">Add</Button>
                 <List style={{marginTop: "10px", width: "300px"}}
                     bordered
-                    dataSource={data}
+                    dataSource={[]}
                     renderItem={item => (
                         <List.Item>
                            {item}
